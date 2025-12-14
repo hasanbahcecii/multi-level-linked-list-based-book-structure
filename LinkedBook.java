@@ -48,26 +48,32 @@ public class LinkedBook {
         }
     }
 
-    public void printAll() {
-        printRecursive(head, 0);
+    public void print() {
+        printRecursive(head, "");
     }
 
-    public void printRecursive(HeadingNode node, int level) {
-        if (node == null) {
-            return;
-        }
-        for (int i = 0; i < level; i++) {
-            System.out.print(" ");
-        }
+    public void printRecursive(HeadingNode node, String prefix) {
 
-        System.out.println(node.title);
+        HeadingNode current = node;
+        int counter = 1;
 
-        if (node.child != null) {
-            printRecursive(node.child, level + 1); // level + 1 çünkü alt seviye bir girinti daha derindir.
-        }
+        while (current != null) {
+            String number;
+            if (prefix.equals("")) {
+                number = "" + counter;
 
-        if (node.next != null) {
-            printRecursive(node.next, level);
+            } else {
+                number = prefix + "." + counter;
+            }
+
+            System.out.println(number + " " + current.getTitle());
+
+            if (current.child != null) {
+                printRecursive(current.child, number);
+            }
+
+            current = current.next;
+            counter++;
         }
     }
 

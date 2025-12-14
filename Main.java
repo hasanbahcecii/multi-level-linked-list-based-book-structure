@@ -1,16 +1,63 @@
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        LinkedBook lb = new LinkedBook();
+        try (Scanner sc = new Scanner(System.in)) {
+            LinkedBook book = new LinkedBook();
 
-        lb.addFirstLevel(1, "A");
-        lb.addFirstLevel(2, "B");
-        lb.addFirstLevel(3, "C");
+            while (true) {
+                String line = sc.nextLine();
 
-        lb.printFirstLevel();
+                if (line.equals("exit")) {
+                    break;
+                }
 
+                processCommand(line, book);
+            }
 
+            sc.close();
+        }
     }
+
+    private static void processCommand(String line, LinkedBook book) {
+
+        int i = 0;
+        int len = line.length();
+
+        // 1️⃣ Komut oku
+        String command = "";
+        while (i < len && line.charAt(i) != ' ') {
+            command += line.charAt(i);
+            i++;
+        }
+
+        i++; // boşluğu geç
+
+        // 2️⃣ Path oku
+        String path = "";
+        while (i < len && line.charAt(i) != ' ') {
+            path += line.charAt(i);
+            i++;
+        }
+
+        i++; // boşluğu geç
+
+        // 3️⃣ Title oku
+        String title = "";
+        while (i < len) {
+            title += line.charAt(i);
+            i++;
+        }
+
+        // 4️⃣ Komut çalıştır
+        if (command.equals("add")) {
+            book.add(path, title);
+        } else if (command.equals("print")) {
+            book.print();
+        }
+    }
+
 }
