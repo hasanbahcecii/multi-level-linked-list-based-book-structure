@@ -14,4 +14,12 @@ public class HeadingNode {
         return title;
     }
 
+    public HeadingNode getNext() {
+        return next;
+    }
+
+    public HeadingNode getChild() {
+        return child;
+    }
+
 }

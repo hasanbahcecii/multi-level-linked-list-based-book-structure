@@ -49,15 +49,22 @@ public class LinkedBook {
     }
 
     public void print() {
-        printRecursive(head, "");
+        printRecursive(head, "", 0);
     }
 
-    public void printRecursive(HeadingNode node, String prefix) {
+    public void printRecursive(HeadingNode node, String prefix, int level) {
 
         HeadingNode current = node;
         int counter = 1;
 
         while (current != null) {
+
+            // Girinti üret
+            String indent = "";
+            for (int i = 0; i < level; i++) {
+                indent += "    ";
+            }
+
             String number;
             if (prefix.equals("")) {
                 number = "" + counter;
@@ -66,10 +73,10 @@ public class LinkedBook {
                 number = prefix + "." + counter;
             }
 
-            System.out.println(number + " " + current.getTitle());
+            System.out.println(indent + number + " " + current.getTitle());
 
             if (current.child != null) {
-                printRecursive(current.child, number);
+                printRecursive(current.child, number, level + 1);
             }
 
             current = current.next;
@@ -85,7 +92,7 @@ public class LinkedBook {
         HeadingNode current = listHead;
         int count = 1;
 
-        while (current != null) {
+        while (current != null && count < n) {
             current = current.next;
             count++;
         }
