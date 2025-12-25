@@ -108,7 +108,7 @@ public class LinkedBook {
     public void add(String path, String title) {
 
         HeadingNode currentListHead = head; // o anki seviye
-        HeadingNode parentNode = null;          // bir üst seviye
+        HeadingNode parentNode = null;      // bir üst seviye
 
         int currentIndex = 0;  // charAt ile oluşan sayı
         int i = 0;             // string index
