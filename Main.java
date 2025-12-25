@@ -7,6 +7,7 @@ public class Main {
 
         try (Scanner sc = new Scanner(System.in)) {
             LinkedBook book = new LinkedBook();
+            book.buildDefaultTree();
 
             while (true) {
                 String line = sc.nextLine();

@@ -181,4 +181,42 @@ public class LinkedBook {
 
     }
 
+    public void buildDefaultTree() {
+
+        // 1. Veri Yapıları ve Algoritmalar
+        add("1", "Veri Yapıları ve Algoritmalar");
+        add("1.1", "Veri Yapısı Nedir");
+        add("1.2", "Algoritma Nedir");
+        add("1.2.1", "Kaba Kod");
+        add("1.2.2", "Akış Şeması");
+        add("1.2.3", "Algoritma Analizi");
+        add("1.2.3.1", "En İyi Durum Analizi");
+        add("1.2.3.2", "Ortalama Durum Analizi");
+        add("1.2.3.3", "En Kötü Durum Analizi");
+
+        // 2. Sıralama
+        add("2", "Sıralama");
+        add("2.1", "Sıralama Nedir");
+        add("2.2", "Sıralama Algoritmaları");
+        add("2.2.1", "Araya Sokma Sıralaması");
+        add("2.2.1.1", "Kaba Kodu");
+        add("2.2.1.1.1", "C Kodu");
+        add("2.2.1.1.2", "Java Kodu");
+        add("2.2.1.1.2.1", "Ekleme");
+        add("2.2.1.1.2.2", "Silme");
+        add("2.2.2", "Seçmeli Sıralama");
+        add("2.2.3", "Kabarcık Sıralama");
+        add("2.2.1.2", "Örnekler");
+        add("2.2.1.2.1", "Örnek 1");
+        add("2.2.1.2.2", "Örnek 2");
+        add("2.2.1.3", "Algoritmanın Analizi");
+
+        // 3. Arama
+        add("3", "Arama");
+
+        // 4. Ağaçlar
+        add("4", "Ağaçlar");
+        add("4.1", "Ağaç Nedir");
+    }
+
 }
