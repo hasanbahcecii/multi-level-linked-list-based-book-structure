@@ -28,7 +28,7 @@ public class Main {
         int i = 0;
         int len = line.length();
 
-        // 1️⃣ Komut oku
+        // Komut oku
         String command = "";
         while (i < len && line.charAt(i) != ' ') {
             command += line.charAt(i);
@@ -37,7 +37,7 @@ public class Main {
 
         i++; // boşluğu geç
 
-        // 2️⃣ Path oku
+        // Path oku
         String path = "";
         while (i < len && line.charAt(i) != ' ') {
             path += line.charAt(i);
@@ -46,14 +46,14 @@ public class Main {
 
         i++; // boşluğu geç
 
-        // 3️⃣ Title oku
+        // Title oku
         String title = "";
         while (i < len) {
             title += line.charAt(i);
             i++;
         }
 
-        // 4️⃣ Komut çalıştır
+        // Komut çalıştır
         if (command.equals("add")) {
             book.add(path, title);
         } else if (command.equals("print")) {

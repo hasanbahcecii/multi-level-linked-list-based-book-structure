@@ -84,7 +84,8 @@ public class LinkedBook {
         }
     }
 
-    private HeadingNode getNthNodeAtLevel(HeadingNode listHead, int n) {
+    // Verilen seviyede n. sıradaki başlığı bulur
+    private HeadingNode findNodeAtPosition(HeadingNode listHead, int n) {
         if (n < 1) {
             return null;
         }
@@ -117,9 +118,11 @@ public class LinkedBook {
 
             if (ch >= '0' && ch <= '9') {
                 currentIndex = currentIndex * 10 + (ch - '0');
+
+                // Nokta karakteri bir alt seviyeye geçişi temsil eder
             } else if (ch == '.') {
 
-                HeadingNode found = getNthNodeAtLevel(currentListHead, currentIndex);
+                HeadingNode found = findNodeAtPosition(currentListHead, currentIndex);
 
                 if (found == null) {
                     return;
@@ -181,6 +184,7 @@ public class LinkedBook {
 
     }
 
+    // Program başında varsayılan olarak oluşturulan ağaç
     public void buildDefaultTree() {
 
         // 1. Veri Yapıları ve Algoritmalar
