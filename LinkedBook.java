@@ -13,6 +13,11 @@ public class LinkedBook {
 
     public void addFirstLevel(int position, String title) {
 
+        if (position <= 0) {
+            System.out.println("Invalid position");
+            return;
+        }
+
         HeadingNode newNode = new HeadingNode(title);
 
         if (head == null) {
@@ -107,11 +112,22 @@ public class LinkedBook {
 
     public void add(String path, String title) {
 
-        HeadingNode currentListHead = head; // o anki seviye
-        HeadingNode parentNode = null;      // bir üst seviye
+        // path format kontrolleri
+        if (path == null || path.length() == 0) {
+            System.out.println("Invalid path");
+            return;
+        }
 
-        int currentIndex = 0;  // charAt ile oluşan sayı
-        int i = 0;             // string index
+        if (path.startsWith(".") || path.endsWith(".")) {
+            System.out.println("Invalid path format");
+            return;
+        }
+
+        HeadingNode currentListHead = head;
+        HeadingNode parentNode = null;
+
+        int currentIndex = 0;
+        int i = 0;
 
         while (i < path.length()) {
             char ch = path.charAt(i);
@@ -119,50 +135,67 @@ public class LinkedBook {
             if (ch >= '0' && ch <= '9') {
                 currentIndex = currentIndex * 10 + (ch - '0');
 
-                // Nokta karakteri bir alt seviyeye geçişi temsil eder
             } else if (ch == '.') {
+
+                // Nokta geldiyse ama öncesinde sayı yoksa
+                if (currentIndex <= 0) {
+                    System.out.println("Invalid path format");
+                    return;
+                }
 
                 HeadingNode found = findNodeAtPosition(currentListHead, currentIndex);
 
                 if (found == null) {
+                    System.out.println("Invalid path: parent not found");
                     return;
                 }
 
                 parentNode = found;
                 currentListHead = parentNode.child;
-
                 currentIndex = 0;
+
+            } else {
+                System.out.println("Invalid character in path");
+                return;
             }
+
             i++;
+        }
+
+        // son pozisyon kontrolü
+        if (currentIndex <= 0) {
+            System.out.println("Invalid position");
+            return;
         }
 
         int position = currentIndex;
 
+        // duplicate control
         HeadingNode temp = currentListHead;
         while (temp != null) {
             if (temp.getTitle().equals(title)) {
+                System.out.println("Duplicate title on same level");
                 return;
             }
-
             temp = temp.next;
         }
 
         HeadingNode newNode = new HeadingNode(title);
         newNode.parent = parentNode;
 
+        // seviye boşsa ekleme
         if (currentListHead == null) {
             if (parentNode != null) {
                 parentNode.child = newNode;
             } else {
                 head = newNode;
             }
-
             return;
         }
 
+        // başa ekleme
         if (position == 1) {
             newNode.next = currentListHead;
-
             if (parentNode != null) {
                 parentNode.child = newNode;
             } else {
@@ -171,17 +204,23 @@ public class LinkedBook {
             return;
         }
 
+        //  ortaya ve sona ekleme 
         HeadingNode current = currentListHead;
-        int count = 0;
+        int count = 1;
 
         while (current.next != null && count < position - 1) {
             current = current.next;
             count++;
         }
 
+        if (count < position - 1) {
+            System.out.println(
+                    "Since the requested number of headings does not exist at this level, it has been added to the last position"
+            );
+        }
+
         newNode.next = current.next;
         current.next = newNode;
-
     }
 
     // Program başında varsayılan olarak oluşturulan ağaç
