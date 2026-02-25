@@ -152,7 +152,7 @@ java Main
 
 ## 📚 Educational Purpose
 
-- This project demonstrates:
+This project demonstrates:
 
 - Multi-level linked list design
 
