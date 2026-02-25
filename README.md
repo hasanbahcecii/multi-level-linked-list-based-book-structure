@@ -10,13 +10,13 @@ Each heading can:
 
 This allows us to represent structures such as:
 
-
+```
 1 Introduction
 1.1 Motivation
 1.2 Scope
 2 Methods
 2.1 Data Collection
-
+```
 
 The system dynamically builds the hierarchy using a **path-based insertion logic** (e.g. `1.2.3`).
 
