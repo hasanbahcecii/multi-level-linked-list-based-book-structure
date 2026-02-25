@@ -115,11 +115,11 @@ Each heading is stored as a node with a constant number of references.
 
 Although deletion is not implemented, the parent pointer enables:
 
-Efficient upward traversal
+- Efficient upward traversal
 
-Future delete operation
+- Future delete operation
 
-Path generation from any node
+- Path generation from any node
 
 This makes the structure extensible and scalable.
 
